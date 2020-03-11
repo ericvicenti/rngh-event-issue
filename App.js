@@ -8,19 +8,12 @@ const {
 
 export default function App() {
   const [panState] = useState(new Value(0));
-  const [translateX] = useState(new Value(0));
-  const [translateY] = useState(new Value(0));
   return (
-    <PanGestureHandler onGestureEvent={event([
+    <PanGestureHandler onHandlerStateChange={event([
       {
         nativeEvent: {
-          state: ({ translationX: x, translationY: y, state }) =>
-          block([
-            set(panState, state),
-            set(translateX, x),
-            set(translateY, y),
-          ])
-        },
+          state: panState
+        }
       },
     ])}>
       <View style={{ flex: 1 }} />
